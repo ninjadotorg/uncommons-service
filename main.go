@@ -1,9 +1,11 @@
 package main
 
 import (
-	_ "github.com/ninjadotorg/uncommons-service/routers"
+	"github.com/ninjadotorg/uncommons-service/config"
+	"github.com/ninjadotorg/uncommons-service/routers"
 )
 
 func main() {
-
+	config.Init()
+	routers.Init()
 }
