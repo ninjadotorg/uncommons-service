@@ -7,8 +7,8 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	"github.com/ninjadotorg/handshake-dispatcher/controllers"
 	"github.com/ninjadotorg/handshake-dispatcher/middlewares"
+	"github.com/ninjadotorg/uncommons-service/controllers"
 )
 
 func NewRouter() *gin.Engine {
@@ -30,12 +30,17 @@ func NewRouter() *gin.Engine {
 	router.GET("/", defaultController.Home)
 
 	userController := new(controllers.UserController)
+	dappController := new(controllers.DappController)
 	userGroup := router.Group("user")
 	{
 		userGroup.GET("/profile", middlewares.AuthMiddleware(), userController.Profile)
 		userGroup.GET("/username-exist", middlewares.AuthMiddleware(), userController.UsernameExist)
 		userGroup.GET("/username/:id", userController.Username)
 		userGroup.POST("/profile", middlewares.AuthMiddleware(), userController.UpdateProfile)
+	}
+	dappGroup := router.Group("dapp")
+	{
+		dappGroup.POST("/create", middlewares.AuthMiddleware(), dappController.Create)
 	}
 
 	router.NoRoute(defaultController.NotFound)
