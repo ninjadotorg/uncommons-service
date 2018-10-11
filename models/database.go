@@ -1,12 +1,11 @@
 package models
 
 import (
-	_ "fmt"
 	"log"
 
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
-	"github.com/ninjadotorg/handshake-dispatcher/config"
+	"github.com/ninjadotorg/uncommons-service/config"
 )
 
 var dbInst *gorm.DB = nil

@@ -3,8 +3,6 @@ package models
 // Dapp : struct
 type Dapp struct {
 	BaseModel
-	DappID          uint16 `gorm:"primary_key:yes;column:dappID" json:"dappID"`
-	AuthorID        string `gorm:"column:authorID" json:"authorID"`
 	Name            string `gorm:"column:name" json:"name"`
 	Description     string `gorm:"column:description" json:"Description"`
 	WhyWeWillLove   string `gorm:"column:why_we_will_love" json:"whyWeWillLove"`
@@ -13,6 +11,8 @@ type Dapp struct {
 	HowFar          string `gorm:"column:how_far" json:"howFar"`
 	ShipDate        string `gorm:"column:ship_date" json:"shipDate"`
 	Amount          string `gorm:"column:amount" json:"amount"`
+	User            User   `gorm:"foreignkey:UserID"`
+	UserID          int    `gorm:"column:user_id;" json:"user_id"`
 }
 
 // TableName : dapp
