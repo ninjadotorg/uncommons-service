@@ -32,7 +32,7 @@ func NewRouter() *gin.Engine {
 
 	userController := new(controllers.UserController)
 	dappController := new(controllers.DappController)
-	userGroup := router.Group("user")
+	userGroup := router.Group("")
 	{
 		userGroup.POST("/sign-up", userController.SignUp)
 	}

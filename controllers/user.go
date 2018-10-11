@@ -6,8 +6,10 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// UserController : struct
 type UserController struct{}
 
+// SignUp ...
 func (u UserController) SignUp(c *gin.Context) {
 	uncommonsWalletAddres := c.DefaultPostForm("uncommons_address", "")
 	uncommonsSignedHash := c.DefaultPostForm("uncommons_signed_hash", "")

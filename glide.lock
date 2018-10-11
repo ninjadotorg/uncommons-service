@@ -1,6 +1,8 @@
-hash: 830844a607446f0d73abd31573619223d9588161556ecd3f9d87f7edfb6b9096
-updated: 2018-10-04T09:39:14.793548+07:00
+hash: 4376dcfaa23b810a26530766e1f1f462e13d71d73caefb1925d3838039e6e501
+updated: 2018-10-11T14:33:51.922176+07:00
 imports:
+- name: github.com/ethereum/go-ethereum
+  version: 198ef97108ec257d49a7b593a9c6fe49961319c0
 - name: github.com/fsnotify/fsnotify
   version: c2828203cd70a50dcccfb2761f8b1f8ceef9a8e9
 - name: github.com/gin-contrib/cors
@@ -53,16 +55,8 @@ imports:
   version: 32723ece9ba74fc88c7f9d26d84e0161fd37c37a
   subpackages:
   - config
-  - controllers
-  - daos
-  - middlewares
-  - models
-  - services
-  - utils
 - name: github.com/pelletier/go-toml
   version: acdc4509485b587f5e675510c4f2c63e90ff68a8
-- name: github.com/segmentio/ksuid
-  version: 112f929a3020abfcd06b77c963ec919130796a35
 - name: github.com/spf13/afero
   version: 63644898a8da0bc22138abf860edaf5277b6102e
   subpackages:
