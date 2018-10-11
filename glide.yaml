@@ -1,4 +1,4 @@
-package: github.com/ninjadotorg/uncommons-service
+package: .
 import:
 - package: github.com/spf13/viper
   version: v1.2.1
@@ -6,5 +6,3 @@ import:
   version: v1.3.0
 - package: github.com/jinzhu/gorm
   version: v1.9.1
-- package: github.com/ethereum/go-ethereum
-  version: ^2.0.0
