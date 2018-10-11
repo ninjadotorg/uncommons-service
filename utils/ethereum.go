@@ -25,7 +25,6 @@ func VerifySig(from, sigHex string, msg []byte) bool {
 	}
 
 	recoveredAddr := crypto.PubkeyToAddress(*pubKey)
-
 	return fromAddr == recoveredAddr
 }
 

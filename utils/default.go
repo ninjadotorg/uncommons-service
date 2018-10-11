@@ -1,7 +1,7 @@
 package utils
 
 import (
-	"github.com/ninjadotorg/handshake-dispatcher/config"
+	"github.com/ninjadotorg/uncommons-service/config"
 )
 
 // GetForwardingEndpoint ...
