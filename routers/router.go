@@ -30,9 +30,14 @@ func NewRouter() *gin.Engine {
 	router.GET("/", defaultController.Home)
 
 	userController := new(controllers.UserController)
+	dappController := new(controllers.DappController)
 	userGroup := router.Group("user")
 	{
 		userGroup.POST("/sign-up", userController.SignUp)
+	}
+	dappGroup := router.Group("dapp")
+	{
+		dappGroup.POST("/create", middlewares.AuthMiddleware(), dappController.Create)
 	}
 
 	router.NoRoute(defaultController.NotFound)
