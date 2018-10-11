@@ -11,6 +11,7 @@ import (
 	"github.com/ninjadotorg/uncommons-service/middlewares"
 )
 
+// NewRouter : endpoints for uncommons
 func NewRouter() *gin.Engine {
 	// Logger
 	logFile, err := os.OpenFile("logs/log.txt", os.O_CREATE|os.O_APPEND|os.O_WRONLY, 0600)
@@ -37,7 +38,7 @@ func NewRouter() *gin.Engine {
 	}
 	dappGroup := router.Group("dapp")
 	{
-		dappGroup.POST("/create", middlewares.AuthMiddleware(), dappController.Create)
+		dappGroup.POST("/create", dappController.Create)
 	}
 
 	router.NoRoute(defaultController.NotFound)
