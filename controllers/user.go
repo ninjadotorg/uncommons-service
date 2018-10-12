@@ -4,6 +4,8 @@ import (
 	"encoding/hex"
 	"net/http"
 
+	"github.com/ninjadotorg/uncommons-service/daos"
+
 	"github.com/ninjadotorg/uncommons-service/models"
 	"github.com/ninjadotorg/uncommons-service/services"
 	"github.com/ninjadotorg/uncommons-service/utils"
@@ -34,6 +36,15 @@ func (u UserController) SignUp(c *gin.Context) {
 		return
 	}
 
+	// check user is exist or not
+	userDAO := daos.UserDAO{}
+	usr, e := userDAO.IsUserExist(uncommonsWalletAddress)
+	if e == nil {
+		resp := JSONResponse{1, "", map[string]interface{}{"passpharse": usr.Payload}}
+		c.JSON(http.StatusOK, resp)
+		return
+	}
+
 	dispatcher := services.DispatcherService{}
 	passpharse, result := dispatcher.SignUp()
 	if !result {
@@ -43,7 +54,7 @@ func (u UserController) SignUp(c *gin.Context) {
 	}
 
 	db := models.Database()
-	user := models.User{Payload: uncommonsWalletAddress, WalletAddress: passpharse}
+	user := models.User{Payload: passpharse, WalletAddress: uncommonsWalletAddress}
 	errDb := db.Create(&user).Error
 	if errDb != nil {
 		resp := JSONResponse{0, "Sign up failed", nil}
